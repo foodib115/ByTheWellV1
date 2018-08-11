@@ -1,11 +1,11 @@
-package com.example.kevinc1.enitiallabv1.rest;
+package com.example.kevinc1.bythewellv1.rest;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestClient {
 
-    public static final String BASE_URL = "http://vps35978.inmotionhosting.com";
+    public static final String BASE_URL = "http://bythewellapp.000webhostapp.com";
     private static Retrofit retrofit = null;
 
     public static Retrofit getClient() {

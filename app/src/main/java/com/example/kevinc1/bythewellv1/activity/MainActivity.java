@@ -1,4 +1,4 @@
-package com.example.kevinc1.enitiallabv1.activity;
+package com.example.kevinc1.bythewellv1.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,12 +8,11 @@ import android.widget.SearchView;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.kevinc1.enitiallabv1.R;
-import com.example.kevinc1.enitiallabv1.adapter.ShipmentAdapter;
-import com.example.kevinc1.enitiallabv1.model.Shipment;
-import com.example.kevinc1.enitiallabv1.model.ShipmentList;
-import com.example.kevinc1.enitiallabv1.rest.RestClient;
-import com.example.kevinc1.enitiallabv1.rest.ShipmentAPIService;
+import com.example.kevinc1.bythewellv1.R;
+import com.example.kevinc1.bythewellv1.adapter.LocationAdapter;
+import com.example.kevinc1.bythewellv1.model.Location;
+import com.example.kevinc1.bythewellv1.rest.RestClient;
+import com.example.kevinc1.bythewellv1.rest.LocationAPIService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +25,11 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    ShipmentAPIService apiService;
+    LocationAPIService apiService;
     SearchView searchView;
     RecyclerView recyclerView;
-    ShipmentAdapter adapter;
-    List<Shipment> shipments = new ArrayList<>();
+    LocationAdapter adapter;
+    List<Location> locations = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +39,12 @@ public class MainActivity extends AppCompatActivity {
         searchView=(SearchView) findViewById(R.id.searchView);
         searchView.setQueryHint("Search View");
 
-        apiService = RestClient.getClient().create(ShipmentAPIService.class);
+        apiService = RestClient.getClient().create(LocationAPIService.class);
 
-        recyclerView = (RecyclerView) findViewById(R.id.ShipmentListRecyclerView);
+        recyclerView = (RecyclerView) findViewById(R.id.LocationListRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new ShipmentAdapter(shipments, R.layout.shipment_item, getApplicationContext());
+        adapter = new LocationAdapter(locations, R.layout.location_item, getApplicationContext());
         recyclerView.setAdapter(adapter);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 Toast.makeText(getBaseContext(), query, Toast.LENGTH_LONG).show();
-                shipments.clear();
+                locations.clear();
                 fetchShipmentList(query);
                 return false;
             }
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 Toast.makeText(getBaseContext(), newText, Toast.LENGTH_LONG).show();
-                shipments.clear();
+                locations.clear();
                 fetchShipmentList(newText);
                 return false;
             }
@@ -74,20 +73,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fetchShipmentList(String query) {
-        Call<List<Shipment>> call = apiService.fetchShipments(query);
-        call.enqueue(new Callback<List<Shipment>>() {
+        Call<List<Location>> call = apiService.fetchLocations(query, "200");
+        call.enqueue(new Callback<List<Location>>() {
             @Override
-            public void onResponse(Call<List<Shipment>> call, Response<List<Shipment>> response) {
+            public void onResponse(Call<List<Location>> call, Response<List<Location>> response) {
                 Log.d(TAG, "Total number of questions fetched : " + response.body().size());
 
-                shipments.addAll(response.body());
+                locations.addAll(response.body());
                 adapter.notifyDataSetChanged();
 
 
             }
 
             @Override
-            public void onFailure(Call<List<Shipment>> call, Throwable t) {
+            public void onFailure(Call<List<Location>> call, Throwable t) {
                 Log.e(TAG, "Got error : " + t.getLocalizedMessage());
             }
         });
