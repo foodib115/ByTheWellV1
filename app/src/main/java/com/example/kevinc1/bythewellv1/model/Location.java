@@ -16,6 +16,12 @@ public class Location implements Serializable{
     @SerializedName("distance")
     @Expose
     private String distance;
+    @SerializedName("latitude")
+    @Expose
+    private String latitude;
+    @SerializedName("longitude")
+    @Expose
+    private String longitude;
 
     public Integer getId() {
         return id;
@@ -39,4 +45,19 @@ public class Location implements Serializable{
 
     public void setDistance(String distance) { this.distance = distance; }
 
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
 }
