@@ -11,14 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ProfileActivity"/>
+        <activity android:name=".activity.ProfileActivity"
+            android:parentActivityName="com.example.kevinc1.bythewellv1.activity.MainActivity">
+        </activity>
         <activity android:name="activity.SearchActivity"
             android:label="SearchActivity">
 
