@@ -3,12 +3,12 @@
 
     <item android:id="@+id/account"
 
-        android:title="My Account"/>
+        android:title="My Profile"/>
     <item android:id="@+id/settings"
 
         android:title="Settings"/>
     <item android:id="@+id/mycart"
 
-        android:title="My Cart"/>
+        android:title="Log Out"/>
 
 </menu>
