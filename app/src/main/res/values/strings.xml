@@ -3,4 +3,5 @@
     <string name="Open">Open</string>
     <string name="Close">Close</string>
     <string name="signin">Gmail Sign-In</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
