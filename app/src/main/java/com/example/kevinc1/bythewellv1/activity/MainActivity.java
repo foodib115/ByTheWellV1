@@ -1,5 +1,6 @@
 package com.example.kevinc1.bythewellv1.activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         //searchView=(SearchView) findViewById(R.id.searchView);
         //searchView.setQueryHint("Search View");
-
+/***
         apiService = RestClient.getClient().create(LocationAPIService.class);
 
         recyclerView = (RecyclerView) findViewById(R.id.LocationListRecyclerView);
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new LocationAdapter(locations, R.layout.location_item, getApplicationContext());
         recyclerView.setAdapter(adapter);
+ **/
 
         dl = (DrawerLayout)findViewById(R.id.activity_main);
         t = new ActionBarDrawerToggle(this, dl,R.string.Open, R.string.Close);
@@ -72,11 +74,13 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 switch(id)
                 {
-                    case R.id.account:
+                    case R.id.home:
                         Toast.makeText(MainActivity.this, "My Account",Toast.LENGTH_SHORT).show();
-                    case R.id.settings:
+                        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    case R.id.profile:
                         Toast.makeText(MainActivity.this, "Settings",Toast.LENGTH_SHORT).show();
-                    case R.id.mycart:
+                    case R.id.logout:
                         Toast.makeText(MainActivity.this, "My Cart",Toast.LENGTH_SHORT).show();
                     default:
                         return true;
@@ -129,7 +133,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 locations.clear();
-                fetchShipmentList(query);
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                intent.putExtra("query", query);
+                startActivity(intent);
+                //fetchShipmentList(query);
                 return false;
             }
 
@@ -141,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
-
+/********
     private void fetchShipmentList(String query) {
         Call<List<Location>> call = apiService.fetchLocations(query, "200");
         call.enqueue(new Callback<List<Location>>() {
@@ -161,6 +168,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+****/
 
 }

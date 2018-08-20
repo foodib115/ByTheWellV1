@@ -2,4 +2,5 @@
     <string name="app_name">ByTheWellV1</string>
     <string name="Open">Open</string>
     <string name="Close">Close</string>
+    <string name="signin">Gmail Sign-In</string>
 </resources>
