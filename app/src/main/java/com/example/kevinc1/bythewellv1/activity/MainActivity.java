@@ -82,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Settings",Toast.LENGTH_SHORT).show();
                     case R.id.logout:
                         Toast.makeText(MainActivity.this, "My Cart",Toast.LENGTH_SHORT).show();
+                        Intent intentLogin = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivity(intentLogin);
                     default:
                         return true;
                 }
