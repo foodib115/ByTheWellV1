@@ -67,29 +67,46 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        nv = (NavigationView)findViewById(R.id.nv);
+        nv = (NavigationView)findViewById(R.id.nvmain);
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
+
+                if (id == R.id.home) {
+                    Toast.makeText(MainActivity.this, "Home",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+
+                else if (id == R.id.profile) {
+                    Toast.makeText(MainActivity.this, "profile",Toast.LENGTH_SHORT).show();
+                }
+
+                else if (id == R.id.login) {
+                    Toast.makeText(MainActivity.this, "Login",Toast.LENGTH_SHORT).show();
+                    Intent intentLogin = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intentLogin);
+                }
+                /******
                 switch(id)
                 {
                     case R.id.home:
-                        Toast.makeText(MainActivity.this, "My Account",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Home",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(MainActivity.this, MainActivity.class);
                         startActivity(intent);
                     case R.id.profile:
-                        Toast.makeText(MainActivity.this, "Settings",Toast.LENGTH_SHORT).show();
-                    case R.id.logout:
-                        Toast.makeText(MainActivity.this, "My Cart",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Profile",Toast.LENGTH_SHORT).show();
+                    case R.id.login:
+                        Toast.makeText(MainActivity.this, "Login",Toast.LENGTH_SHORT).show();
                         Intent intentLogin = new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(intentLogin);
                     default:
                         return true;
                 }
+                ******/
 
-
-
+                return true;
 
             }
         });

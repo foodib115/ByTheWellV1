@@ -75,27 +75,46 @@ public class SearchActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        nv = (NavigationView)findViewById(R.id.nv);
+        nv = (NavigationView)findViewById(R.id.nvsearch);
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
+
+                if (id == R.id.home) {
+                    Toast.makeText(SearchActivity.this, "Home",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+
+                else if (id == R.id.profile) {
+                    Toast.makeText(SearchActivity.this, "profile",Toast.LENGTH_SHORT).show();
+                }
+
+                else if (id == R.id.login) {
+                    Toast.makeText(SearchActivity.this, "Login",Toast.LENGTH_SHORT).show();
+                    Intent intentLogin = new Intent(SearchActivity.this, LoginActivity.class);
+                    startActivity(intentLogin);
+                }
+                /******
                 switch(id)
                 {
                     case R.id.home:
-                        Toast.makeText(SearchActivity.this, "My Account",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(SearchActivity.this, MainActivity.class);
-                        startActivity(intent);
+                        Toast.makeText(SearchActivity.this, "Home",Toast.LENGTH_SHORT).show();
+                        //Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+                        //startActivity(intent);
                     case R.id.profile:
-                        Toast.makeText(SearchActivity.this, "Settings",Toast.LENGTH_SHORT).show();
-                    case R.id.logout:
-                        Toast.makeText(SearchActivity.this, "My Cart",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SearchActivity.this, "Profile",Toast.LENGTH_SHORT).show();
+                    case R.id.login:
+                        Toast.makeText(SearchActivity.this, "Login",Toast.LENGTH_SHORT).show();
+                        //Intent intentLogin = new Intent(SearchActivity.this, LoginActivity.class);
+                        //startActivity(intentLogin);
                     default:
                         return true;
                 }
+                *******/
 
-
-
+                return true;
 
             }
         });

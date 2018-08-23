@@ -47,7 +47,7 @@
         app:menu="@menu/navigation_menu"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
-        android:id="@+id/nv">
+        android:id="@+id/nvsearch">
 
     </android.support.design.widget.NavigationView>
 
